@@ -1,0 +1,93 @@
+<div class="max-w-2xl mx-auto my-8 p-6 bg-white shadow-md rounded-lg">
+  <h2 class="text-2xl font-bold mb-6 text-gray-800">
+    {{ isEditMode() ? 'Modify Existing Course' : 'Create New Course' }}
+  </h2>
+
+  <form [formGroup]="courseForm" (ngSubmit)="onSubmit()" class="space-y-4">
+    <!-- Course Name -->
+    <div>
+      <label class="block text-sm font-semibold text-gray-700">Course Name</label>
+      <input formControlName="courseName" type="text" 
+             class="mt-1 w-full p-2 border rounded focus:ring-2 focus:ring-blue-500"
+             [ngClass]="{'border-red-500': courseForm.get('courseName')?.touched && courseForm.get('courseName')?.invalid}"/>
+      @if (courseForm.get('courseName')?.touched && courseForm.get('courseName')?.errors?.['required']) {
+        <p class="text-red-500 text-xs mt-1">Course title is mandatory.</p>
+      }
+      @if (courseForm.get('courseName')?.touched && courseForm.get('courseName')?.errors?.['minlength']) {
+        <p class="text-red-500 text-xs mt-1">Must contain at least 3 characters.</p>
+      }
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <!-- Instructor -->
+      <div>
+        <label class="block text-sm font-semibold text-gray-700">Instructor</label>
+        <input formControlName="instructorName" type="text" class="mt-1 w-full p-2 border rounded"/>
+        @if (courseForm.get('instructorName')?.touched && courseForm.get('instructorName')?.invalid) {
+          <p class="text-red-500 text-xs mt-1">Instructor field is required.</p>
+        }
+      </div>
+
+      <!-- Category -->
+      <div>
+        <label class="block text-sm font-semibold text-gray-700">Category</label>
+        <select formControlName="category" class="mt-1 w-full p-2 border rounded">
+          <option value="">Select Category</option>
+          <option value="Frontend">Frontend</option>
+          <option value="Backend">Backend</option>
+          <option value="Design">Design</option>
+        </select>
+        @if (courseForm.get('category')?.touched && courseForm.get('category')?.invalid) {
+          <p class="text-red-500 text-xs mt-1">Category assignment is required.</p>
+        }
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <!-- Duration -->
+      <div>
+        <label class="block text-sm font-semibold text-gray-700">Duration (Hours)</label>
+        <input formControlName="duration" type="number" class="mt-1 w-full p-2 border rounded"/>
+        @if (courseForm.get('duration')?.touched && courseForm.get('duration')?.invalid) {
+          <p class="text-red-500 text-xs mt-1">Must be greater than 0.</p>
+        }
+      </div>
+
+      <!-- Price -->
+      <div>
+        <label class="block text-sm font-semibold text-gray-700">Price ($)</label>
+        <input formControlName="price" type="number" class="mt-1 w-full p-2 border rounded"/>
+        @if (courseForm.get('price')?.touched && courseForm.get('price')?.invalid) {
+          <p class="text-red-500 text-xs mt-1">Minimum pricing value is 0.</p>
+        }
+      </div>
+
+      <!-- Status -->
+      <div>
+        <label class="block text-sm font-semibold text-gray-700">Status</label>
+        <select formControlName="status" class="mt-1 w-full p-2 border rounded">
+          <option value="Active">Active</option>
+          <option value="Draft">Draft</option>
+          <option value="Archived">Archived</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div>
+      <label class="block text-sm font-semibold text-gray-700">Description (Optional)</label>
+      <textarea formControlName="description" rows="3" class="mt-1 w-full p-2 border rounded"></textarea>
+      @if (courseForm.get('description')?.touched && courseForm.get('description')?.invalid) {
+        <p class="text-red-500 text-xs mt-1">Description exceeds max 500 characters.</p>
+      }
+    </div>
+
+    <!-- Actions -->
+    <div class="flex justify-end space-x-3 pt-4">
+      <a routerLink="/courses" class="px-4 py-2 border rounded text-gray-600 hover:bg-gray-50">Cancel</a>
+      <button type="submit" [disabled]="courseForm.invalid" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 shadow-sm disabled:opacity-50 disabled:cursor-not-allowed">
+        Save Progress
+      </button>
+    </div>
+  </form>
+</div>

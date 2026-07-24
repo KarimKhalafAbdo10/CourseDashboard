@@ -1,0 +1,38 @@
+{
+  "courses": [
+    {
+      "id": "1",
+      "courseName": "Angular 20 Fundamentals",
+      "instructorName": "Ahmed Ali",
+      "category": "Frontend",
+      "duration": 20,
+      "price": 1500,
+      "status": "Active",
+      "description": "start now your career",
+      "createdDate": "2026-01-15"
+    },
+    {
+      "id": "2",
+      "courseName": "ASP.NET Core API",
+      "instructorName": "Sara Mohamed",
+      "category": "Backend",
+      "duration": 30,
+      "price": 2000,
+      "status": "Draft",
+      "description": "Build REST APIs with.NET 8",
+      "createdDate": "2026-02-01"
+    },
+    {
+      "courseName": "react",
+      "instructorName": "ahmed",
+      "category": "Frontend",
+      "duration": 10,
+      "price": 7000,
+      "status": "Active",
+      "description": "",
+      "id": "sivaX2kPWKk",
+      "createdDate": "2026-07-24"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

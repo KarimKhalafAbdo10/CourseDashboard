@@ -1,1 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global Tailwind CSS is injected by the PostCSS plugin @tailwindcss/postcss */
+@import "tailwindcss";
+   
+@import 'ngx-toastr/toastr';
