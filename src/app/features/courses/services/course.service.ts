@@ -3,6 +3,7 @@ import { inject, Injectable, signal, Signal } from '@angular/core';
 import { Course } from '../moldels/course';
 import { Observable } from 'rxjs';
 import { finalize, tap } from 'rxjs/operators';
+import { environment } from '../../../../environments/environment.production';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ import { finalize, tap } from 'rxjs/operators';
 export class CourseService {
 
 private http = inject(HttpClient);
-  private apiUrl = '/api/courses';
+  private apiUrl = environment.apiUrl ;
 
   // 1. Private Writable Signals (internal state)
   #courses = signal<Course[]>([]);
