@@ -54,7 +54,10 @@ export class CourseFormComponent implements OnInit {
     const formValue = {
       ...rawValue,
       duration: Number(rawValue.duration),
-      price: Number(rawValue.price)
+      price: Number(rawValue.price),
+      ...(!this.isEditMode() && { 
+      createdDate: new Date().toISOString().split('T')[0] 
+    })
     };
 const action$ = this.isEditMode()
   ? this.courseService.updateCourse(this.courseId()!, formValue)

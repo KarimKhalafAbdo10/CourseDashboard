@@ -33,6 +33,5 @@
       "id": "sivaX2kPWKk",
       "createdDate": "2026-07-24"
     }
-  ],
-  "$schema": "./node_modules/json-server/schema.json"
+  ]
 }
