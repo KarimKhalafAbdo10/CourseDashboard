@@ -36,3 +36,5 @@ Make sure you have Node.js and npm installed on your system.
 Clone the repository and install all project dependencies:
 ```bash
 npm install
+npm run mock-api
+npm s --o
